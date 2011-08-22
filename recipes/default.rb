@@ -44,9 +44,10 @@ execute "compile nginx with passenger" do
   node[:nginx][:compile_options].each do |option,value|
     value == true ? compile_options << "--#{option}" : compile_options << "--#{option}=#{value}"
   end
-  command "passenger-install-nginx-module --auto --prefix=/usr --nginx-source-dir=#{nginx_src} --extra-configure-flags=\"#{compile_options.join(" ")}\""
+  command "passenger-install-nginx-module --auto --prefix=#{default[:nginx][:prefix_dir]} --nginx-source-dir=#{nginx_src} --extra-configure-flags=\"#{compile_options.join(" ")}\""
   # notifies :restart, resources(:service => "nginx")
-  not_if "nginx -V"
+  creates "#{default[:nginx][:prefix_dir]}/nginx"
+  # not_if "nginx -V"
   # TODO add check for specific passenger version her
 end
 
