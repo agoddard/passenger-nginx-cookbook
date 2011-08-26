@@ -17,3 +17,5 @@ default[:nginx][:compile_options]['with-http_stub_status_module'] = true
 default[:nginx][:compile_options]['with-http_ssl_module'] = true
 default[:nginx][:compile_options]['with-http_gzip_static_module'] = true
 default[:nginx][:compile_options]['with-file-aio'] = true
+
+default[:nginx][:conf][:worker_processes] = 1
