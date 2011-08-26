@@ -19,3 +19,14 @@ default[:nginx][:compile_options]['with-http_gzip_static_module'] = true
 default[:nginx][:compile_options]['with-file-aio'] = true
 
 default[:nginx][:conf][:worker_processes] = 1
+default[:nginx][:conf][:worker_connections] = 1024
+
+default[:nginx][:conf][:user] = "nobody"
+
+
+default[:nginx][:conf][:http][:include] = 'mime.types'
+default[:nginx][:conf][:http][:default_type] = 'application/octet-stream'
+default[:nginx][:conf][:http][:sendfile] = "on"
+default[:nginx][:conf][:http][:tcp_nopush] = "on"
+default[:nginx][:conf][:http][:keepalive_timeout] = 65
+default[:nginx][:conf][:http][:gzip] = "on"
