@@ -13,8 +13,8 @@
 ### END INIT INFO
 
 
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:<%= node[:nginx][:prefix_dir] %>/nginx/sbin
-DAEMON=<%= node[:nginx][:prefix_dir] %>/nginx/sbin/nginx
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=<%= node[:nginx][:prefix_dir] %>/sbin/nginx
 NAME=nginx
 DESC=nginx
 
