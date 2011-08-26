@@ -56,5 +56,5 @@ template "/etc/init.d/nginx" do
   source "init.erb"
   mode '0755'
   owner 'root'
-  group 'roota'
+  group 'root'
 end
