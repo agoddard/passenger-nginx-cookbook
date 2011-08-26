@@ -3,6 +3,7 @@ default[:nginx][:source][:url] = "http://nginx.org/download/nginx-"
 default[:nginx][:source][:version] = "1.0.5"
 default[:nginx][:source][:checksum] = "b8c6df4e55a41425b57ba0de5ed8a84722dceb0eb7fbb4123f7f8f314763c8df"
 default[:nginx][:prefix_dir] = "/usr"
+default[:nginx][:base_dir] = "/var/lib/nginx"
 
 default[:nginx][:compile_options]['conf-path'] = '/etc/nginx/nginx.conf'
 default[:nginx][:compile_options]['error-log-path'] = '/var/log/nginx/error.log'

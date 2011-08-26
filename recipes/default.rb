@@ -51,6 +51,14 @@ execute "compile nginx with passenger" do
   # TODO add check for specific passenger version here
 end
 
+
+directory node[:nginx][:base_dir] do
+  owner "root"
+  group "root"
+  mode "0755"
+  action :create
+end
+
 # write the init script
 template "/etc/init.d/nginx" do
   source "init.erb"
