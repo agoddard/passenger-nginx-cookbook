@@ -42,12 +42,19 @@ end
 execute "compile nginx with passenger" do
   compile_options = Array.new
   node[:nginx][:compile_options].each do |option,value|
-    value == true ? compile_options << "--#{option}" : compile_options << "--#{option}=#{value}"
+    value === true ? compile_options << "--#{option}" : compile_options << "--#{option}=#{value}"
   end
   command "passenger-install-nginx-module --auto --prefix=#{node[:nginx][:prefix_dir]} --nginx-source-dir=#{nginx_src} --extra-configure-flags=\"#{compile_options.join(" ")}\""
   # notifies :restart, resources(:service => "nginx")
   creates "#{node[:nginx][:prefix_dir]}/sbin/nginx"
   # not_if "nginx -V"
-  # TODO add check for specific passenger version her
+  # TODO add check for specific passenger version here
 end
 
+# write the init script
+template "/etc/init.d/nginx" do
+  source "init.erb"
+  mode '0755'
+  owner 'root'
+  group 'roota'
+end
